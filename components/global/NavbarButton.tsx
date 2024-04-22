@@ -7,7 +7,7 @@ const NavbarButton = (): React.ReactElement => {
   if (!isLoaded) return <p>please wait...</p>;
   return isSignedIn ? (
     <div className="flex items-center gap-4">
-      <Link href="/dashboard/create-diary">Create Diary</Link>
+      <Link href="/dashboard">Create Diary</Link>
       <Link href="/dashboard/my-diary">My Diary</Link>
       <UserButton afterSignOutUrl="/" />
     </div>
