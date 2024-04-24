@@ -4,9 +4,8 @@ import { getUserData } from "@/utils/clerk";
 
 export const CreateDiaryAction = async (formData: FormData): Promise<void> => {
   const content = formData.get("content");
-  const user = getUserData();
-
-  console.log(user);
+  const { avatar, email, username } = await getUserData();
 
   redirect("/dashboard/my-diary");
 };
+8;

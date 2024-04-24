@@ -1,13 +1,16 @@
 import { currentUser } from "@clerk/nextjs/server";
 
 export interface IUser {
-  email: string;
-  username?: string;
-  avatar: string;
+  email: string | undefined;
+  username?: string | null | undefined;
+  avatar: string | undefined;
 }
 
-export const getUserData = (): IUser => {
-  const user = currentUser();
+export const getUserData = async (): Promise<IUser> => {
+  const user = await currentUser();
+  const email = user?.emailAddresses[0].emailAddress;
+  const username = user?.username;
+  const avatar = user?.imageUrl;
 
-  return { email: "asas", username: "adaw", avatar: "adaw" };
+  return { email, username, avatar };
 };
