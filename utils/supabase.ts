@@ -1,17 +1,17 @@
 import { createClient } from "@supabase/supabase-js";
 import { UUID } from "crypto";
 
-const supabase = createClient(
+export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
   process.env.SUPABASE_SECRET_KEY as string
 );
 
 export interface IDiary {
   content: string;
-  email: string;
-  username?: string;
-  avatar: string;
-  created_at?: string;
+  email: string | null | undefined;
+  username?: string | null | undefined;
+  avatar: string | null | undefined;
+  created_at?: string | null | undefined;
   comments?: [IComments];
 }
 
