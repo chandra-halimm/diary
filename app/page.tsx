@@ -1,9 +1,10 @@
 import Wrapper from "@/components/global/Wrapper";
 import React from "react";
+import CardDiaries from "../components/global/(diary)/CardDiaries";
 export default function Home(): React.ReactElement {
   return (
     <Wrapper title="Home">
-      <div className="grid grid-cols-3 gap-4"></div>
+      <CardDiaries />
     </Wrapper>
   );
 }
