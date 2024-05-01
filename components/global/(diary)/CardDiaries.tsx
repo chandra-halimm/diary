@@ -9,11 +9,11 @@ const CardDiaries = async () => {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      {data.map((diary, i) => {
+      {data.map((diary) => {
         console.log(diary);
         return (
           <PostContent
-            key={i + 1}
+            key={diary.id}
             avatar={diary.avatar}
             content={diary.content}
             email={diary.email}
