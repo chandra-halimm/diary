@@ -14,11 +14,23 @@ const page = async (): Promise<React.ReactElement> => {
 
   if (error) return <p>Please reload the page...</p>;
 
+  console.log(data);
+
   return (
     <React.Fragment>
       <Wrapper>
         <div className="grid grid-cols-3 gap-4">
-          <PostContent avatar="" content="" email="" username="" />
+          {data.map((diary) => {
+            return (
+              <PostContent
+                key={diary.id}
+                avatar={diary.avatar}
+                content={diary.content}
+                email={diary.email}
+                username={diary.username}
+              />
+            );
+          })}
         </div>
       </Wrapper>
     </React.Fragment>
@@ -26,3 +38,5 @@ const page = async (): Promise<React.ReactElement> => {
 };
 
 export default page;
+
+// 4.03.13
