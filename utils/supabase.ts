@@ -7,6 +7,7 @@ export const supabase = createClient(
 );
 
 export interface IDiary {
+  diary_id?: number;
   content: string;
   email: string | null | undefined;
   username?: string | null | undefined;
@@ -16,5 +17,5 @@ export interface IDiary {
 }
 
 export interface IComments extends IDiary {
-  id: UUID;
+  comment_id: UUID;
 }
