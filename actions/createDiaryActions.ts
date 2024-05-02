@@ -2,8 +2,11 @@
 import { redirect } from "next/navigation";
 import { getUserData } from "@/utils/clerk";
 import { supabase, IDiary } from "@/utils/supabase";
+import { Redirect } from "next";
 
-export const CreateDiaryAction = async (formData: FormData): Promise<void> => {
+export const CreateDiaryAction = async (
+  formData: FormData
+): Promise<Redirect> => {
   const content = formData.get("content") as string;
   const { avatar, email, username } = await getUserData();
 
