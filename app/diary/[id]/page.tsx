@@ -2,6 +2,7 @@ import { supabase } from "@/utils/supabase";
 import React from "react";
 import Image from "next/image";
 import Wrapper from "@/components/global/Wrapper";
+import CreateCommentForm from "../../../components/dashboard/CreateCommentForm";
 
 type ParamsProps = {
   params: {
@@ -29,8 +30,11 @@ const page = async ({ params }: ParamsProps): Promise<React.ReactElement> => {
         <h3>{data.email || data.username}</h3>
         <p>{data.content}</p>
       </div>
+      <CreateCommentForm diary_id={data.id} />
     </Wrapper>
   );
 };
 
 export default page;
+
+// 4:50

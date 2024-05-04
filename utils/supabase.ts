@@ -13,9 +13,9 @@ export interface IDiary {
   username?: string | null | undefined;
   avatar: string | null | undefined;
   created_at?: string | null | undefined;
-  comments?: [IComments];
+  comments?: Array<IComments>;
 }
 
 export interface IComments extends IDiary {
-  comment_id: UUID;
+  comment_id?: UUID | undefined;
 }

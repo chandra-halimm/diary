@@ -3,6 +3,7 @@ import Wrapper from "@/components/global/Wrapper";
 import PostContent from "@/components/global/(diary)/PostContent";
 import { supabase } from "@/utils/supabase";
 import { getUserData } from "@/utils/clerk";
+import CreateCommentForm from "../../../components/dashboard/CreateCommentForm";
 
 const page = async (): Promise<React.ReactElement> => {
   const { email } = await getUserData();
@@ -32,6 +33,7 @@ const page = async (): Promise<React.ReactElement> => {
             );
           })}
         </div>
+        <CreateCommentForm diary_id={data.id} />
       </Wrapper>
     </React.Fragment>
   );
