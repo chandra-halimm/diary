@@ -17,5 +17,5 @@ export interface IDiary {
 }
 
 export interface IComments extends IDiary {
-  comment_id?: UUID | undefined;
+  comment_id: UUID;
 }

@@ -13,5 +13,20 @@ export const createCommentAction = async (formData: FormData) => {
 
   const data: IComments = { comment_id, avatar, email, username, content };
 
-  await supabase.from("diary").update({ comments: data }).eq("id", diary_id);
+  // ! memeriksa komen terakhir terlebih dahulu
+  const getComment = await supabase
+    .from("diary")
+    .select("comments")
+    .eq("id", diary_id)
+    .single();
+
+  console.log(getComment);
+
+  const existingComment: Array<IComments> = getComment.data?.comments || [];
+  const newComent = [...existingComment, data];
+
+  await supabase
+    .from("diary")
+    .update({ comments: newComent })
+    .eq("id", diary_id);
 };

@@ -15,7 +15,8 @@ const CreateCommentForm = ({ diary_id }: ParamsProps) => {
         className="h-52 p-4 text-lg border border-primary textarea"
         name="content"
         placeholder="isi diary mu"
-      ></textarea>
+      />
+      <input type="hidden" value={diary_id} name="diary_id" />
       <button className="btn btn-secondary text-white" type="submit">
         Create Now
       </button>

@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Wrapper from "@/components/global/Wrapper";
 import CreateCommentForm from "../../../components/dashboard/CreateCommentForm";
+import { CommentList } from "../../../components/global/(diary)/CommentList";
 
 type ParamsProps = {
   params: {
@@ -30,6 +31,9 @@ const page = async ({ params }: ParamsProps): Promise<React.ReactElement> => {
         <h3>{data.email || data.username}</h3>
         <p>{data.content}</p>
       </div>
+      <div className="divider" />
+      <CommentList diary_id={data.id} />
+      <div className="divider" />
       <CreateCommentForm diary_id={data.id} />
     </Wrapper>
   );
