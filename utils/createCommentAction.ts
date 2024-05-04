@@ -3,8 +3,12 @@
 import { getUserData } from "@/utils/clerk";
 import { IComments, supabase } from "@/utils/supabase";
 import { randomUUID } from "crypto";
+import { Redirect } from "next";
+import { redirect } from "next/navigation";
 
-export const createCommentAction = async (formData: FormData) => {
+export const createCommentAction = async (
+  formData: FormData
+): Promise<Redirect> => {
   const content = formData.get("content") as string;
   const diary_id = formData.get("diary_id");
   const comment_id = randomUUID();
@@ -20,8 +24,6 @@ export const createCommentAction = async (formData: FormData) => {
     .eq("id", diary_id)
     .single();
 
-  console.log(getComment);
-
   const existingComment: Array<IComments> = getComment.data?.comments || [];
   const newComent = [...existingComment, data];
 
@@ -29,4 +31,6 @@ export const createCommentAction = async (formData: FormData) => {
     .from("diary")
     .update({ comments: newComent })
     .eq("id", diary_id);
+
+  redirect(`/diary/${diary_id}`);
 };

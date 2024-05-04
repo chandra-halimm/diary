@@ -14,6 +14,9 @@ export const CommentList = async ({ diary_id }: ParamsProps) => {
     .single();
 
   if (error) return <p>Please reload the page...</p>;
+  if (!data.comments || !data.comments.length) {
+    return <p>No comments available</p>;
+  }
 
   return (
     <div className=" flex flex-col gap-4">
